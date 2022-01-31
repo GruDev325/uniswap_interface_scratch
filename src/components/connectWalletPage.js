@@ -7,3 +7,37 @@ import {
   Typography,
 } from "@material-ui/core";
 import logo from "../assets/img/logo.svg";
+
+const styles = (theme) => ({
+  paperContainer: {
+    borderRadius: theme.spacing(2),
+    padding: theme.spacing(1),
+    paddingBottom: theme.spacing(3),
+    maxWidth: 700,
+    margin: "auto",
+    marginTop: "200px",
+  },
+  fullWidth: {
+    width: "100%",
+  },
+  title: {
+    textAlign: "center",
+    padding: theme.spacing(0.5),
+    marginBottom: theme.spacing(1),
+  },
+  hr: {
+    width: "100%",
+  },
+  balance: {
+    padding: theme.spacing(1),
+    overflow: "wrap",
+    textAlign: "center",
+  },
+  buttonIcon: {
+    marginRight: theme.spacing(1),
+    padding: theme.spacing(0.4),
+  },
+  footer: {
+    marginTop: "155px",
+  },
+});
