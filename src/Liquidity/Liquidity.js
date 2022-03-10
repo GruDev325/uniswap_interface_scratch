@@ -6,7 +6,10 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import logo from "../assets/img/logo.svg";
+
+import SwitchButton from "./SwitchButton";
+import LiquidityDeployer from "./LiquidityDeployer";
+import LiquidityRemover from "./RemoveLiquidity";
 
 const styles = (theme) => ({
   paperContainer: {
@@ -15,27 +18,11 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(3),
     maxWidth: 700,
     margin: "auto",
-    marginTop: "200px",
-  },
-  fullWidth: {
-    width: "100%",
   },
   title: {
     textAlign: "center",
     padding: theme.spacing(0.5),
     marginBottom: theme.spacing(1),
-  },
-  hr: {
-    width: "100%",
-  },
-  balance: {
-    padding: theme.spacing(1),
-    overflow: "wrap",
-    textAlign: "center",
-  },
-  buttonIcon: {
-    marginRight: theme.spacing(1),
-    padding: theme.spacing(0.4),
   },
   footer: {
     marginTop: "155px",
@@ -44,26 +31,27 @@ const styles = (theme) => ({
 
 const useStyles = makeStyles(styles);
 
-function ConnectWalletPage() {
+function Liquidity() {
   const classes = useStyles();
+
+  const [deploy, setDeploy] = React.useState(true);
+
+  const deploy_or_remove = (deploy) => {
+    if (deploy === true) {
+      return <LiquidityDeployer />;
+    }
+    return <LiquidityRemover />;
+  };
+
   return (
     <div>
-      <div className="Title">
-        <h1 className="navbar-logo">
-          <img src={logo} className="logo"></img> Autonity Uniswap
-        </h1>
-      </div>
-
       <Container>
         <Paper className={classes.paperContainer}>
-          <Typography
-            variant="h6"
-            className={classes.title}
-            color="common.white"
-          >
-            Please connect an Ethereum wallet to your browser to use the
-            application
+          <Typography variant="h5" className={classes.title}>
+            <SwitchButton setDeploy={setDeploy} />
           </Typography>
+
+          {deploy_or_remove(deploy)}
         </Paper>
       </Container>
 
@@ -83,4 +71,4 @@ function ConnectWalletPage() {
   );
 }
 
-export default ConnectWalletPage;
+export default Liquidity;
